@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smart.im.server.main.dao.UserDao">
+
+
+    <select id="getUserById01" parameterType="string"
+            resultType="com.smart.im.server.main.entity.User">
+		select * from s_user where id=#{id}
+	</select>
+
+
+    <select id="getUserById02" parameterType="string"
+            resultType="com.smart.im.server.main.entity.User">
+		select id  from s_user where id=#{id}
+	</select>
+
+
+
+</mapper>
