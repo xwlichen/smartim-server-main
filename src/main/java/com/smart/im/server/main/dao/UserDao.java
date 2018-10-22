@@ -7,6 +7,8 @@ import org.springframework.stereotype.Repository;
 public interface UserDao {
 	public User getUserById01(String phonenum);
 	public User getUserById02(String phonenum);
+
+	public void insertUser(User user);
 	
 
 }

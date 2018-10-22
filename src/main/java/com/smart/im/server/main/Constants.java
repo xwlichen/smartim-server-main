@@ -3,7 +3,7 @@ package com.smart.im.server.main;
 /**
  * Created by 19600 on 2017/1/11.
  */
-public class Constant {
+public class Constants {
     //qiniu 地址
     public static final  String QINIUURL="http://ojleivxnt.bkt.clouddn.com/";
 

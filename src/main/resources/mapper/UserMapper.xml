@@ -15,6 +15,11 @@
 		select id  from s_user where id=#{id}
 	</select>
 
+	<insert id="insertUser" parameterType="com.smart.im.server.main.entity.User">
+ 		insert into s_user (id,password) values
+ 		(#{id},#{password})
+ 	</insert>
+
 
 
 </mapper>

@@ -25,8 +25,8 @@
         <spring-cloud.version>Finchley.SR1</spring-cloud.version>
     </properties>
 
-    <!--spring config 配置中心-->
     <dependencies>
+        <!--spring config 配置中心-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-config</artifactId>
@@ -35,13 +35,10 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-bus-amqp</artifactId>
         </dependency>
+        <!--spring config 配置中心-->
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
 
+        <!--spring-boot-->
         <!--spring-boot-starter web项目集成tomcat-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -53,6 +50,32 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
+
+
+        <!--开启 cache 缓存-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
+        </dependency>
+
+        <!-- 使用redis作为缓存数据区域 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
+        <!--spriing-boot-security-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!--spring-boot-->
 
 
         <!--jdbc相关-->
@@ -75,6 +98,32 @@
             <version>1.1.9</version>
         </dependency>
         <!--jdbc相关-->
+
+
+
+
+
+        <!--安全-->
+        <!--token-->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.9.1</version>
+        </dependency>
+
+        <!--安全-->
+
+
+        <!--其他-->
+        <!--插件工具 省略get 、set方法的编写   https://projectlombok.org/-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.2</version>
+            <optional>true</optional>
+        </dependency>
+        <!--其他-->
+
 
     </dependencies>
 
