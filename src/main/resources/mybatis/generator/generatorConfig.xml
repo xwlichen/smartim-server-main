@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+
+
+<generatorConfiguration>
+    <!-- 驱动程序(在classpath中已存在驱动的情况下不需要) -->
+    <classPathEntry location="/Users/lichen/Documents/Environment/mysql-connector-java-8.0.13.jar" />
+    <context id="context1" targetRuntime="MyBatis3">
+
+        <!-- 注释 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true" />
+            <property name="suppressDate" value="true" />
+        </commentGenerator>
+
+        <!-- 数据库连接 -->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/smartim"
+                        userId="root"
+                        password="123456" />
+        <!--允许数值类型转换成不同类型,否则都映射为BigDecimal -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <!-- cms为工程名 -->
+        <!-- com.cms.admin.model为javabean存放目录 -->
+        <!-- 模型文件 -->
+        <javaModelGenerator targetPackage="com.smart.im.server.main.dao.mybatis.model"
+                            targetProject="/Users/lichen/Documents/WorkSpace/Smart/smartim-server-main/src/main/java">
+            <property name="enableSubPackages" value="false" />
+            <!-- 当为true时，产生的代码文件将按照schema产生子文件夹 -->
+            <property name="trimStrings" value="true" />
+            <!-- set变量时自动剔除空白 -->
+        </javaModelGenerator>
+        <!-- XML映射文件 -->
+        <!-- com.cms.admin.xml为SQL配置存放目录 -->
+        <sqlMapGenerator targetPackage="com.smart.im.server.main.dao.mybatis.xml"
+                         targetProject="/Users/lichen/Documents/WorkSpace/Smart/smartim-server-main/src/main/java">
+            <property name="enableSubPackages" value="false" />
+        </sqlMapGenerator>
+
+        <!-- DAO文件(mapper接口) -->
+        <!-- com.cms.admin.mapper为SQL对应接口存入目录 -->
+        <javaClientGenerator targetPackage="com.smart.im.server.main.dao.mybatis.mapper"
+                             targetProject="/Users/lichen/Documents/WorkSpace/Smart/smartim-server-main/src/main/java" type="XMLMAPPER">
+            <property name="enableSubPackages" value="false" />
+        </javaClientGenerator>
+
+        <!-- 数据库表 -->
+        <!-- 可以一次性配置多个表处理 -->
+        <!-- 后面发现去掉table中的schema属性就可以了.. 经测试,如果数据库用的是Oracle,SqlServer需要去掉schema属性,MySQL则不需要去掉-->
+        <table  tableName="s_user" domainObjectName="User"
+                enableCountByExample="false"
+                enableUpdateByExample="false"
+                enableDeleteByExample="false"
+                enableSelectByExample="false"
+                selectByExampleQueryId="false" >
+            <property name="useActualColumnNames" value="false"></property>
+        </table>
+    </context>
+</generatorConfiguration>
+
+
+
+
+
+
+
+
+
+<!--<generatorConfiguration>-->
+    <!--&lt;!&ndash; 数据库驱动:选择你的本地硬盘上面的数据库驱动包&ndash;&gt;-->
+    <!--<classPathEntry  location="/Users/lichen/Documents/Environment/mysql-connector-java-5.1.41.jar"/>-->
+    <!--<context id="userGenerator"  targetRuntime="MyBatis3">-->
+        <!--<commentGenerator>-->
+            <!--<property name="suppressDate" value="true"/>-->
+            <!--&lt;!&ndash; 是否去除自动生成的注释 true：是 ： false:否 &ndash;&gt;-->
+            <!--<property name="suppressAllComments" value="true"/>-->
+        <!--</commentGenerator>-->
+        <!--&lt;!&ndash;数据库链接URL，用户名、密码 &ndash;&gt;-->
+        <!--<jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"-->
+                        <!--connectionURL="dbc:mysql://localhost:3306/smartim?useUnicode=true"-->
+                        <!--userId="root"-->
+                        <!--password="123456"></jdbcConnection>-->
+        <!--<javaTypeResolver>-->
+            <!--<property name="forceBigDecimals" value="false"/>-->
+        <!--</javaTypeResolver>-->
+        <!--&lt;!&ndash; 生成模型的包名和位置&ndash;&gt;-->
+        <!--<javaModelGenerator targetPackage="com.smart.im.server.main.dao.mybatis.model" targetProject="/Users/lichen/Documents/WorkSpace/Smart/smartim-server-main/src/main/java">-->
+            <!--<property name="enableSubPackages" value="true"/>-->
+            <!--<property name="trimStrings" value="true"/>-->
+        <!--</javaModelGenerator>-->
+        <!--&lt;!&ndash; 生成映射文件的包名和位置&ndash;&gt;-->
+        <!--<sqlMapGenerator targetPackage="mybatis/mapper" -->
+                         <!--targetProject="/Users/lichen/Documents/WorkSpace/Smart/smartim-server-main/src/main/resources">-->
+            <!--<property name="enableSubPackages" value="true"/>-->
+        <!--</sqlMapGenerator>-->
+        <!--&lt;!&ndash; 生成DAO的包名和位置&ndash;&gt;-->
+        <!--<javaClientGenerator type="XMLMAPPER" targetPackage="com.smart.im.server.main.dao.mybatis" targetProject="/Users/lichen/Documents/WorkSpace/Smart/smartim-server-main/src/main/java">-->
+            <!--<property name="enableSubPackages" value="true"/>-->
+        <!--</javaClientGenerator>-->
+        <!--&lt;!&ndash; 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名&ndash;&gt;-->
+        <!--<table tableName="tb2_user" domainObjectName="User" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+    <!--</context>-->
+<!--</generatorConfiguration>-->

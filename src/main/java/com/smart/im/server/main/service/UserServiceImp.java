@@ -4,7 +4,8 @@ package com.smart.im.server.main.service;
 import com.smart.im.server.main.dao.UserDao;
 import com.smart.im.server.main.entity.DataResult;
 import com.smart.im.server.main.entity.User;
-import com.smart.im.server.main.secruity.JwtTokenUtil;
+import com.smart.im.server.main.config.secruity.JwtTokenUtil;
+import com.smart.im.server.main.entity.reponse.LoginResponse;
 import com.smart.im.server.main.utils.CommonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -19,7 +20,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
-import java.util.UUID;
 
 @Service
 public class UserServiceImp implements UserService {
@@ -34,17 +34,7 @@ public class UserServiceImp implements UserService {
 
 
 
-//	@Autowired
-//	public AuthServiceImpl(
-//			AuthenticationManager authenticationManager,
-//			UserDetailsService userDetailsService,
-//			JwtTokenUtil jwtTokenUtil,
-//			UserRepository userRepository) {
-//		this.authenticationManager = authenticationManager;
-//		this.userDetailsService = userDetailsService;
-//		this.jwtTokenUtil = jwtTokenUtil;
-//		this.userRepository = userRepository;
-//	}
+
 
 	@Autowired
 	public UserServiceImp(AuthenticationManager authenticationManager) {
@@ -54,33 +44,21 @@ public class UserServiceImp implements UserService {
 
 
 
-	public DataResult checkLogin(String phonenum,String password,
-								 HttpSession session) throws Exception {
-		DataResult result = new DataResult();
+	public DataResult login(String phonenum, String password)  {
 		User user = userDao.getUserById01(phonenum);
-		if(user==null){
-			result.code=0;
-			result.message="该用户未注册!";
-			return result;
+		if(user==null&&CommonUtil.isNullOrEmpty(user.getId())){
+			return DataResult.createFail("该用户未注册!");
 		}
-		//解密
-//		String md5_pwd = CommonUtil.md5(password);
-		String md5_user_pwd=user.password;
-
-
 		UsernamePasswordAuthenticationToken upToken = new UsernamePasswordAuthenticationToken(phonenum, password);
-		// Perform the security
 		final Authentication authentication = authenticationManager.authenticate(upToken);
 		SecurityContextHolder.getContext().setAuthentication(authentication);
-
-		// Reload password post-security so we can generate token
 		final UserDetails userDetails = userDetailsService.loadUserByUsername(phonenum);
 		final String token = jwtTokenUtil.generateToken(userDetails);
 
-        result.code=1;
-        result.message="登录成功";
-		result.object=token;
-		return result;
+		LoginResponse response=new LoginResponse();
+		response.setToken(token);
+		response.setUser(user);
+		return DataResult.createSuccess("登陆成功",response);
 	}
 
 
@@ -89,7 +67,7 @@ public class UserServiceImp implements UserService {
 
 
 
-	public DataResult registe(String phonenum, String password) throws Exception {
+	public DataResult registe(String phonenum, String password) {
 		DataResult result = new DataResult();
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		User user=new User();
@@ -97,29 +75,19 @@ public class UserServiceImp implements UserService {
 		user.setPassword(encoder.encode(password));
 		//检测用户名是否被占用
 		userDao.insertUser(user);
-        result.code=1;
-        result.message="注册成功";
-		return result;
+		return DataResult.createSuccess("注册成功");
 	}
 
 	@Override
 	public DataResult getUserInfo(String phonenum) {
 		DataResult result = new DataResult();
 		User user = userDao.getUserById01(phonenum);
-		if(user==null){
-			result.code=0;
-			result.message="该用户未注册!";
-			return result;
+		if(user==null&&CommonUtil.isNullOrEmpty(user.getId())) {
+			return DataResult.createFail("该用户未注册!");
 		}
-		//解密
-//		String md5_pwd = CommonUtil.md5(password);
-		String md5_user_pwd=user.password;
-
-
-		result.code=1;
-		result.message="请求成功";
-		result.object=user;
-		return result;
+			LoginResponse response=new LoginResponse();
+			response.setUser(user);
+		return DataResult.createSuccess(response);
 	}
 
 
