@@ -1,9 +1,8 @@
 package com.smart.im.server.main.entity;
 
-import com.smart.im.server.main.eums.StatusEnum;
+import com.smart.im.server.main.eums.ApiStatusEnum;
 import com.smart.im.server.main.utils.CommonUtil;
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -17,7 +16,7 @@ import java.io.Serializable;
 @Data
 @ApiModel(description = "返回响应数据")
 public class DataResult<T> implements Serializable {
-    private String code;
+    private int code;
     private String message;
     private T data;
 
@@ -25,47 +24,59 @@ public class DataResult<T> implements Serializable {
     }
 
 
-    public DataResult(String code, String message) {
+    public DataResult(int code, String message) {
         this.code = code;
         this.message = message;
     }
 
-    public DataResult(String code, String message, T data) {
+    public DataResult(int code, String message, T data) {
         this.code = code;
         this.message = message;
         this.data = data;
     }
 
 
-    public static <T> DataResult<T> create(StatusEnum statusEnum) {
+
+
+    public static <T> DataResult<T> create(int  code,String message) {
+        return new DataResult<T>(code, message);
+    }
+
+
+
+
+    public static <T> DataResult<T> create(ApiStatusEnum statusEnum) {
         return new DataResult<T>(statusEnum.getCode(), statusEnum.getMessage());
     }
 
-    public static <T> DataResult<T> create(StatusEnum statusEnum, T data) {
+    public static <T> DataResult<T> create(ApiStatusEnum statusEnum, T data) {
         return new DataResult<T>(statusEnum.getCode(), statusEnum.getMessage(), data);
     }
 
-    public static <T> DataResult<T> create(StatusEnum statusEnum, String message, T data) {
+    public static <T> DataResult<T> create(ApiStatusEnum statusEnum, String message, T data) {
 
         return new DataResult<T>(statusEnum.getCode(), message, data);
     }
 
+
+
+
     public static <T> DataResult<T> createSuccess(T data) {
-        return new DataResult<T>(StatusEnum.SUCCESS.getCode(), StatusEnum.SUCCESS.getMessage(),data);
+        return new DataResult<T>(ApiStatusEnum.SUCCESS.getCode(), ApiStatusEnum.SUCCESS.getMessage(),data);
     }
 
     public static <T> DataResult<T> createSuccess(String message) {
-        return new DataResult<T>(StatusEnum.SUCCESS.getCode(), CommonUtil.isNullOrEmpty(message) ? StatusEnum.SUCCESS.getMessage() : message);
+        return new DataResult<T>(ApiStatusEnum.SUCCESS.getCode(), CommonUtil.isNullOrEmpty(message) ? ApiStatusEnum.SUCCESS.getMessage() : message);
     }
     public static <T> DataResult<T> createSuccess(String message, T data) {
-        return new DataResult<T>(StatusEnum.SUCCESS.getCode(), CommonUtil.isNullOrEmpty(message) ? StatusEnum.SUCCESS.getMessage() : message, data);
+        return new DataResult<T>(ApiStatusEnum.SUCCESS.getCode(), CommonUtil.isNullOrEmpty(message) ? ApiStatusEnum.SUCCESS.getMessage() : message, data);
     }
 
     public static <T> DataResult<T> createFail(String message) {
-        return new DataResult<T>(StatusEnum.FAIL.getCode(), CommonUtil.isNullOrEmpty(message) ? StatusEnum.FAIL.getMessage() : message);
+        return new DataResult<T>(ApiStatusEnum.FAIL.getCode(), CommonUtil.isNullOrEmpty(message) ? ApiStatusEnum.FAIL.getMessage() : message);
     }
     public static <T> DataResult<T> createFail(String message, T t) {
-        return new DataResult<T>(StatusEnum.FAIL.getCode(), CommonUtil.isNullOrEmpty(message) ? StatusEnum.FAIL.getMessage() : message, t);
+        return new DataResult<T>(ApiStatusEnum.FAIL.getCode(), CommonUtil.isNullOrEmpty(message) ? ApiStatusEnum.FAIL.getMessage() : message, t);
     }
 
 

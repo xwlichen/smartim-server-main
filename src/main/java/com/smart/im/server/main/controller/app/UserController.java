@@ -32,8 +32,6 @@ public class UserController {
     @Value("${jwt.header}")
     private String tokenHeader;
 
-    @Value("${jwt.tokenHead}")
-    private String tokenHead;
 
     @Autowired
     private JwtTokenUtil jwtTokenUtil;

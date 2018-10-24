@@ -7,7 +7,7 @@ import lombok.Data;
  * 参数校验异常
  */
 @Data
-public class ValidatorException extends BaseException{
+public class ValidatorException extends  BaseException{
 
     private Integer status = Constants.PARAMS_FILE;
 

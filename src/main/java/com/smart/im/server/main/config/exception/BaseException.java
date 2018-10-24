@@ -5,9 +5,11 @@ import lombok.Data;
 @Data
 public class BaseException extends Exception{
 
-    private Integer status = 200;
+    private int code;
+    private String message;
 
-    public BaseException(String msg) {
-        super(msg);
+    public BaseException(String message){
+        this.message=message;
     }
+
 }
