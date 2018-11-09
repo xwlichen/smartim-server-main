@@ -2,17 +2,13 @@ package com.smart.im.server.main.config.exception.handler;
 
 
 import com.smart.im.server.main.Constants;
-import com.smart.im.server.main.config.exception.BaseException;
-import com.smart.im.server.main.dao.mybatis.model.ErrorLog;
 import com.smart.im.server.main.entity.DataResult;
+import com.smart.im.server.main.entity.ErrorLog;
 import com.smart.im.server.main.eums.ExceptionStatusEnum;
 import com.smart.im.server.main.utils.SpringContextHolder;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.NoHandlerFoundException;
@@ -20,10 +16,9 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 
+import static com.smart.im.server.main.Constants.LOG_ERROR;
 import static com.smart.im.server.main.utils.IpUtil.getIpAddr;
 
 /**
@@ -37,9 +32,9 @@ import static com.smart.im.server.main.utils.IpUtil.getIpAddr;
  * spring.resources.add-mappings = false
  */
 
+@Slf4j
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-    protected static Logger logger= LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
     @Value("${jwt.header}")
     private String tokenHeader;
@@ -75,11 +70,9 @@ public class GlobalExceptionHandler {
         }
 
         errorLog.setResult(e.toString());
+        log.error(LOG_ERROR,errorLog.toString());
 
-        logger.error("errorLog:",errorLog.toString());
-        String str=errorLog.toString();
-        String str1=e.toString();
-        logger.error("Exception {}", e.getStackTrace()[0].toString());
+        log.info("--------------------");
         return dataResult;
     }
 

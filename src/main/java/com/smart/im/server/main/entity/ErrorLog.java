@@ -1,4 +1,4 @@
-package com.smart.im.server.main.dao.mybatis.model;
+package com.smart.im.server.main.entity;
 
 import lombok.Data;
 

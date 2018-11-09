@@ -16,6 +16,7 @@ public enum ExceptionStatusEnum {
     /**
      * 方法内部执行异常
      */
+
     E_INVOCATIONTARGET(5001, "方法内部执行异常"),
 
     /**

@@ -1,10 +1,10 @@
 package com.smart.im.server.main.service;
 
 
+import com.smart.im.server.main.config.secruity.JwtTokenUtil;
 import com.smart.im.server.main.dao.UserDao;
 import com.smart.im.server.main.entity.DataResult;
 import com.smart.im.server.main.entity.User;
-import com.smart.im.server.main.config.secruity.JwtTokenUtil;
 import com.smart.im.server.main.entity.reponse.LoginResponse;
 import com.smart.im.server.main.utils.CommonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +18,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import javax.servlet.http.HttpSession;
 
 @Service
 public class UserServiceImp implements UserService {

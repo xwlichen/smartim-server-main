@@ -1,15 +1,8 @@
 package com.smart.im.server.main.utils;
 
 
-import com.smart.im.server.main.Constants;
-import com.smart.im.server.main.dao.mybatis.model.ErrorLog;
-import org.springframework.beans.factory.annotation.Value;
-
-import javax.servlet.http.HttpServletRequest;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Enumeration;
-import java.util.UUID;
 
 public class CommonUtil {
 
