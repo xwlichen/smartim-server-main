@@ -1,7 +1,8 @@
 package com.smart.im.server.main;
 
-import com.smart.im.server.main.entity.User;
 import com.smart.im.server.main.config.redis.RedisHelperImpl;
+import com.smart.im.server.main.entity.bean.User;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

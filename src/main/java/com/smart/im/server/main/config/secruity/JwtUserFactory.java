@@ -1,6 +1,7 @@
 package com.smart.im.server.main.config.secruity;
 
-import com.smart.im.server.main.entity.User;
+import com.smart.im.server.main.entity.bean.User;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 

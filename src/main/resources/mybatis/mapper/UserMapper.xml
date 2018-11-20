@@ -5,20 +5,26 @@
 
 
     <select id="getUserById01" parameterType="string"
-            resultType="com.smart.im.server.main.entity.User">
+            resultType="com.smart.im.server.main.entity.bean.User">
 		select * from s_user where id=#{id}
 	</select>
 
 
     <select id="getUserById02" parameterType="string"
-            resultType="com.smart.im.server.main.entity.User">
+            resultType="com.smart.im.server.main.entity.bean.User">
 		select id  from s_user where id=#{id}
 	</select>
 
-	<insert id="insertUser" parameterType="com.smart.im.server.main.entity.User">
+	<insert id="insertUser" parameterType="com.smart.im.server.main.entity.bean.User">
  		insert into s_user (id,password) values
  		(#{id},#{password})
  	</insert>
+
+
+	<select id="queryUserByPhoneNum" parameterType="string"
+		resultType="com.smart.im.server.main.entity.bean.User">
+		select * from s_user where id=#{id}
+	</select>
 
 
 

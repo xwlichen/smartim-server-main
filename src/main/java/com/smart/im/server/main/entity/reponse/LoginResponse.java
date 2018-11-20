@@ -1,6 +1,7 @@
 package com.smart.im.server.main.entity.reponse;
 
-import com.smart.im.server.main.entity.User;
+import com.smart.im.server.main.entity.bean.User;
+
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 

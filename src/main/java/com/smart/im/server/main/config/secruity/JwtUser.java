@@ -1,6 +1,7 @@
 package com.smart.im.server.main.config.secruity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

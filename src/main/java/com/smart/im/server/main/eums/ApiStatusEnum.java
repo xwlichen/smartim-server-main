@@ -36,7 +36,12 @@ public enum ApiStatusEnum{
     /**
      * 权限错误
      */
-    ERROR_AUTH(2005, "权限错误")
+    ERROR_AUTH(2005, "权限错误"),
+
+    /**
+     * 权限错误
+     */
+    ERROR_TOKEN(2006, "Token失效")
     ;
 
 

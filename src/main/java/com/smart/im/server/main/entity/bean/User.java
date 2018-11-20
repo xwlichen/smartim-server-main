@@ -1,10 +1,11 @@
-package com.smart.im.server.main.entity;
+package com.smart.im.server.main.entity.bean;
 
-import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
 import org.springframework.data.annotation.Id;
 
 import java.util.Date;
+
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 
 @Data
 public class User {

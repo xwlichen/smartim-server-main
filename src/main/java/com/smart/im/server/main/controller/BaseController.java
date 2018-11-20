@@ -2,6 +2,7 @@ package com.smart.im.server.main.controller;
 
 import com.smart.im.server.main.config.redis.RedisHelper;
 import com.smart.im.server.main.config.secruity.JwtTokenUtil;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
@@ -25,4 +26,11 @@ public class BaseController {
     //jwt token 工具类
     @Autowired
     public JwtTokenUtil jwtTokenUtil;
+
+//    public BaseRequest request;
+
+
+
+
+
 }

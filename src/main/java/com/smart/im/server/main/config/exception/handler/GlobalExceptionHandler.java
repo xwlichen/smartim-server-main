@@ -6,17 +6,20 @@ import com.smart.im.server.main.entity.DataResult;
 import com.smart.im.server.main.entity.ErrorLog;
 import com.smart.im.server.main.eums.ExceptionStatusEnum;
 import com.smart.im.server.main.utils.SpringContextHolder;
-import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
-import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Date;
 import java.util.UUID;
+
+import javax.servlet.http.HttpServletRequest;
+
+import lombok.extern.slf4j.Slf4j;
 
 import static com.smart.im.server.main.Constants.LOG_ERROR;
 import static com.smart.im.server.main.utils.IpUtil.getIpAddr;

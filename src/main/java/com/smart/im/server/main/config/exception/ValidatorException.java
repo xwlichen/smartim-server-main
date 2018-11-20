@@ -1,6 +1,7 @@
 package com.smart.im.server.main.config.exception;
 
 import com.smart.im.server.main.Constants;
+
 import lombok.Data;
 
 /**

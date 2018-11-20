@@ -1,8 +1,8 @@
 package com.smart.im.server.main.entity;
 
-import lombok.Data;
-
 import java.util.Date;
+
+import lombok.Data;
 
 
 /**

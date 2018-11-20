@@ -1,14 +1,19 @@
 package com.smart.im.server.main.dao;
 
-import com.smart.im.server.main.entity.User;
+import com.smart.im.server.main.entity.bean.User;
+
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserDao {
-	public User getUserById01(String phonenum);
-	public User getUserById02(String phonenum);
+	 User getUserById01(String phonenum);
+	 User getUserById02(String phonenum);
 
-	public void insertUser(User user);
+	 void insertUser(User user);
+
+
+	//根据手机号查询
+	User queryUserByPhoneNum(String phonenum);
 	
 
 }

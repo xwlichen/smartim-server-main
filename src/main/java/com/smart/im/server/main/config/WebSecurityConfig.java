@@ -2,6 +2,7 @@ package com.smart.im.server.main.config;
 
 import com.smart.im.server.main.config.interceptor.JwtAuthenticationTokenFilter;
 import com.smart.im.server.main.config.secruity.JwtAuthenticationEntryPoint;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;

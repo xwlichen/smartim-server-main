@@ -2,10 +2,11 @@ package com.smart.im.server.main.entity;
 
 import com.smart.im.server.main.eums.ApiStatusEnum;
 import com.smart.im.server.main.utils.CommonUtil;
-import io.swagger.annotations.ApiModel;
-import lombok.Data;
 
 import java.io.Serializable;
+
+import io.swagger.annotations.ApiModel;
+import lombok.Data;
 
 /**
  * @author : lichen
